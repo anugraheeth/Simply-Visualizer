@@ -2,6 +2,8 @@
 
 A dynamic web application built with React that visualizes sorting algorithms in real-time. Currently featuring Bubble Sort with more algorithms coming soon.
 
+![Image 1](Image/Visualizer.gif)
+
 ## Live Demo
 
 [Click here to see the live demo](https://anugraheeth.github.io/Simply-Visualizer/)
