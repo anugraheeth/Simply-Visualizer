@@ -2,6 +2,11 @@
 
 A dynamic web application built with React that visualizes sorting algorithms in real-time. Currently featuring Bubble Sort with more algorithms coming soon.
 
+## Live Demo
+
+[Click here to see the live demo](https://anugraheeth.github.io/Simply-Visualizer/)
+
+
 ## 🚀 Features
 
 - Real-time visualization of sorting algorithms
@@ -103,7 +108,7 @@ The visualization:
 
 1. Clone the repository
 ```bash
-git clone 
+git clone https://github.com/anugraheeth/Simply-Visualizer.git
 ```
 
 2. Install dependencies
@@ -134,4 +139,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-```
