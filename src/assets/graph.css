@@ -19,7 +19,13 @@
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    overflow-y: hidden;
+    overflow: hidden;
+    overscroll-behavior: none;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Graph Container */
@@ -29,6 +35,7 @@ body {
     align-items: center;
     width: 100%;
     margin: 20px 0;
+    flex: 1;
 }
 h1{
     font-family: 'MuseoModerno', cursive;
