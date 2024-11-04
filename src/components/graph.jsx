@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../assets/graph.css";
 import bubbleSort from "../algorithms/bubbleSort";
+import quickSort from "../algorithms/quickSort";
 
 function Graph() {
     const [array, setArray] = useState([]);
@@ -61,7 +62,14 @@ function Graph() {
                 setIsSorting(false);
                 return;
             }
-        }
+        } else if (algo === "quick") {
+            animation = quickSort(array);
+            if (!Array.isArray(animation)) {
+                console.error("Invalid animation returned from sorting algorithm");
+                setIsSorting(false);
+                return;
+            }
+        }   
 
         setAnimations(animation);
         visualizeSort(animation);
@@ -160,7 +168,7 @@ function Graph() {
                         {isSorting ? 'Stop' : 'Reset'}
                     </button>
                 </div>
-                <p className="note">Note: Currently only Bubble Sort is functioning. More sorting algorithms will be added soon.</p>
+                <p className="note">Note: Currently only Bubble Sort & Quick Sort  is functioning. More sorting algorithms will be added soon.</p>
             </div>
             <div className="section-container">
                 <div className="graph">

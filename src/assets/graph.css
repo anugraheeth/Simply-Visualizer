@@ -19,6 +19,7 @@
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
+    overflow-y: hidden;
 }
 
 /* Graph Container */
