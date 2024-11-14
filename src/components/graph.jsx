@@ -187,7 +187,7 @@ function Graph() {
                         {isSorting ? 'Stop' : 'Reset'}
                     </button>
                 </div>
-                <p className="note">Note: Currently only Bubble Sort & Quick Sort  is functioning. More sorting algorithms will be added soon.</p>
+                <p className="note">Note: Currently only Bubble Sort, Quick Sort & Selection Sort  is functioning. More sorting algorithms will be added soon.</p>
             </div>
             <div className="section-container">
                 <div className="graph">
