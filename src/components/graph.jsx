@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../assets/graph.css";
 import bubbleSort from "../algorithms/bubbleSort";
 import quickSort from "../algorithms/quickSort";
+import selectionSort from "../algorithms/selectionSort";
 
 function Graph() {
     const [array, setArray] = useState([]);
@@ -69,7 +70,14 @@ function Graph() {
                 setIsSorting(false);
                 return;
             }
-        }   
+        } else if (algo === "selection") {
+            animation = selectionSort(array);
+            if (!Array.isArray(animation)) {
+                console.error("Invalid animation returned from sorting algorithm");
+                setIsSorting(false);
+                return;
+            }
+        }
 
         setAnimations(animation);
         visualizeSort(animation);
@@ -121,6 +129,12 @@ function Graph() {
                                 bars[j].style.backgroundColor = "var(--bar-default)";
                             }
                             setIsSorting(false);
+                            
+                            // Add new timeout to reset after bars return to default color
+                            setTimeout(() => {
+                                generateArray(size);
+                            }, 500); // Half second delay after bars return to default
+                            
                         }, 3000);
                     }, 100);
                 }
@@ -139,14 +153,19 @@ function Graph() {
             <div className="controls-container">
                 <h1>Simply Sorting Visualizer</h1>
                 <div className="controls-group">
-                    <input 
-                        type="range" 
-                        min="10"
-                        max="40" 
-                        onChange={(e) => generateArray(parseInt(e.target.value))} 
-                        defaultValue="20"
-                        disabled={isSorting} 
-                    />
+                    <div className="range-container">
+                        <div className="range-labels">
+                            <span>Array Size</span>
+                        </div>
+                        <input 
+                            type="range" 
+                            min="10"
+                            max="40" 
+                            onChange={(e) => generateArray(parseInt(e.target.value))} 
+                            defaultValue="20"
+                            disabled={isSorting} 
+                        />
+                    </div>
                     <select name="algorithm" id="algo" disabled={isSorting}>
                         <option value="bubble">Bubble Sort</option>
                         <option value="selection">Selection Sort</option>

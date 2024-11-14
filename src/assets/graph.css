@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
 
-
 :root {
     --bg-primary: #1a1a1a;
     --bg-secondary: #2d2d2d;
@@ -14,7 +13,6 @@
     --bar-swapping: #ff6b6b;
     --button-hover: #8e6bf8;
 }
-
 
 body {
     background-color: var(--bg-primary);
@@ -37,10 +35,10 @@ body {
     margin: 20px 0;
     flex: 1;
 }
-h1{
+
+h1 {
     font-family: 'MuseoModerno', cursive;
 }
-
 
 .graph {
     height: 200px;
@@ -55,7 +53,7 @@ h1{
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     margin: 0 auto;
-}   
+}
 
 /* Bar Styling */
 .bar {
@@ -83,7 +81,6 @@ h1{
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
-/* Title */
 .controls-container h1 {
     font-size: 2rem;
     margin: 10px 0;
@@ -91,7 +88,6 @@ h1{
     color: var(--text-primary);
 }
 
-/* Controls Group */
 .controls-group {
     display: flex;
     gap: 15px;
@@ -133,7 +129,7 @@ select, button {
     border-radius: 6px;
     border: 2px solid var(--accent-primary);
     font-size: 14px;
-    min-width: 120px;
+    min-width: 130px;
     background-color: var(--bg-secondary);
     color: var(--text-primary);
     cursor: pointer;
@@ -192,35 +188,6 @@ button:hover {
     }
 }
 
-@media (max-width: 480px) {
-    .graph {
-        height: 250px;
-    }
-}
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--button-hover);
-}
-
-
-
-/* Media Queries */
 @media (max-width: 768px) {
     .controls-container {
         padding: 10px;
@@ -254,12 +221,18 @@ button:hover {
         width: 16px;  
         height: 16px;
     }
-    .note{
+
+    .note {
         font-size: 0.7rem;
     }
 }
 
 @media (max-width: 480px) {
+    .graph {
+        height: 250px;
+        padding: 10px;
+    }
+
     .controls-container {
         padding: 8px;
         gap: 6px;
@@ -286,13 +259,34 @@ button:hover {
         width: 75px;
     }
 
-    .graph {
-        height: 250px;
-        padding: 10px;
-    }
     .note {
         font-size: 0.65rem;
     }
+
+    .bar {
+        width: 4px;
+        margin: 0 1.3px;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--button-hover);
 }
 
 .controls-group button {
@@ -304,4 +298,16 @@ button:hover {
 
 .controls-group button:hover {
     opacity: 0.9;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.range-labels span {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: bold;
 }
