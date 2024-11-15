@@ -3,6 +3,7 @@ import "../assets/graph.css";
 import bubbleSort from "../algorithms/bubbleSort";
 import quickSort from "../algorithms/quickSort";
 import selectionSort from "../algorithms/selectionSort";
+import insertionSort from "../algorithms/insertionSort";
 
 function Graph() {
     const [array, setArray] = useState([]);
@@ -72,6 +73,13 @@ function Graph() {
             }
         } else if (algo === "selection") {
             animation = selectionSort(array);
+            if (!Array.isArray(animation)) {
+                console.error("Invalid animation returned from sorting algorithm");
+                setIsSorting(false);
+                return;
+            }
+        }else if (algo === "insertion") {
+            animation = insertionSort(array);
             if (!Array.isArray(animation)) {
                 console.error("Invalid animation returned from sorting algorithm");
                 setIsSorting(false);
@@ -159,7 +167,7 @@ function Graph() {
                         </div>
                         <input 
                             type="range" 
-                            min="10"
+                            min="20"
                             max="40" 
                             onChange={(e) => generateArray(parseInt(e.target.value))} 
                             defaultValue="20"
@@ -187,7 +195,7 @@ function Graph() {
                         {isSorting ? 'Stop' : 'Reset'}
                     </button>
                 </div>
-                <p className="note">Note: Currently only Bubble Sort, Quick Sort & Selection Sort  is functioning. More sorting algorithms will be added soon.</p>
+                <p className="note">Note: Currently Merge Sort  is not functioning.  Will be added soon.</p>
             </div>
             <div className="section-container">
                 <div className="graph">

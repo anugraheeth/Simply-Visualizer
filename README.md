@@ -85,6 +85,113 @@ These tuples are then used by the visualization component to:
 2. Swap the bars' positions (when isSwap is true)
 3. Control the timing and sequence of the animations
 
+### Selection Sort Implementation
+
+```javascript
+function selectionSort(array) {
+    const auxiliaryArray = [...array];
+    const animations = [];
+    const n = auxiliaryArray.length;
+
+    for (let i = 0; i < n - 1; i++) {
+        let minIndex = i;
+        for (let j = i + 1; j < n; j++) {
+            animations.push([j, minIndex, false]); // Comparison
+            if (auxiliaryArray[j] < auxiliaryArray[minIndex]) {
+                minIndex = j;
+            }
+        }
+        if (minIndex !== i) {
+            animations.push([i, minIndex, true]); // Swap
+            [auxiliaryArray[i], auxiliaryArray[minIndex]] = 
+                [auxiliaryArray[minIndex], auxiliaryArray[i]];
+        }
+    }
+    return animations;
+}
+```
+The Selection Sort algorithm:
+- Divides the array into a sorted and an unsorted region.
+- Repeatedly selects the smallest element from the unsorted region and moves it to the end of the sorted region.
+- Creates an animation array to track all comparisons and swaps, returning an array of animation tuples in the format: [index1, index2, isSwap].
+  - For comparisons: [3, 4, false] means "compare elements at index 3 and 4".
+  - For swaps: [3, 4, true] means "swap elements at index 3 and 4".
+- Preserves the original array by working on a copy.
+
+### Insertion Sort Implementation
+
+```javascript
+function insertionSort(array) {
+    const auxiliaryArray = [...array];
+    const animations = [];
+    const n = auxiliaryArray.length;
+
+    for (let i = 1; i < n; i++) {
+        let key = auxiliaryArray[i];
+        let j = i - 1;
+
+        while (j >= 0 && auxiliaryArray[j] > key) {
+            animations.push([j, j + 1, false]); // Comparison
+            animations.push([j, j + 1, true]);  // Swap
+            auxiliaryArray[j + 1] = auxiliaryArray[j];
+            j--;
+        }
+        auxiliaryArray[j + 1] = key;
+    }
+    return animations;
+}
+```
+The Insertion Sort algorithm:
+- Builds a sorted array one element at a time.
+- Compares the current element with the sorted elements and places it in the correct position.
+- Creates an animation array to track all comparisons and swaps, returning an array of animation tuples in the format: [index1, index2, isSwap].
+  - For comparisons: [3, 4, false] means "compare elements at index 3 and 4".
+  - For swaps: [3, 4, true] means "swap elements at index 3 and 4".
+- Preserves the original array by working on a copy.
+
+### Quick Sort Implementation
+
+```javascript
+function quickSort(array) {
+    const animations = [];
+    
+    const sort = (arr, left, right) => {
+        if (left < right) {
+            const pivotIndex = partition(arr, left, right);
+            sort(arr, left, pivotIndex - 1);
+            sort(arr, pivotIndex + 1, right);
+        }
+    };
+
+    const partition = (arr, left, right) => {
+        const pivot = arr[right];
+        let i = left - 1;
+
+        for (let j = left; j < right; j++) {
+            animations.push([j, right, false]); // Comparison
+            if (arr[j] < pivot) {
+                i++;
+                animations.push([i, j, true]); // Swap
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+        }
+        animations.push([i + 1, right, true]); // Swap pivot
+        [arr[i + 1], arr[right]] = [arr[right], arr[i + 1]];
+        return i + 1;
+    };
+
+    sort(array, 0, array.length - 1);
+    return animations;
+}
+```
+The Quick Sort algorithm:
+- Uses a divide-and-conquer approach to sort the array.
+- Selects a pivot and partitions the array into elements less than and greater than the pivot.
+- Creates an animation array to track all comparisons and swaps, returning an array of animation tuples in the format: [index1, index2, isSwap].
+  - For comparisons: [3, 4, false] means "compare elements at index 3 and 4".
+  - For swaps: [3, 4, true] means "swap elements at index 3 and 4".
+- Preserves the original array by working on a copy.
+
 ### Visualization Logic
 ```javascript
 const visualizeSort = (animations) => {

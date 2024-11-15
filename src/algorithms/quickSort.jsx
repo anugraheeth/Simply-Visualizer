@@ -2,7 +2,6 @@ export default function quickSort(array) {
     const auxiliaryArray = [...array];
     const animations = [];
     quickSortHelper(auxiliaryArray, 0, auxiliaryArray.length - 1, animations);
-     console.log("Sorted array:", auxiliaryArray);
     return animations;
 }
 
