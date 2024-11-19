@@ -4,6 +4,7 @@ import bubbleSort from "../algorithms/bubbleSort";
 import quickSort from "../algorithms/quickSort";
 import selectionSort from "../algorithms/selectionSort";
 import insertionSort from "../algorithms/insertionSort";
+import mergeSort from "../algorithms/mergeSort";
 
 function Graph() {
     const [array, setArray] = useState([]);
@@ -80,6 +81,13 @@ function Graph() {
             }
         }else if (algo === "insertion") {
             animation = insertionSort(array);
+            if (!Array.isArray(animation)) {
+                console.error("Invalid animation returned from sorting algorithm");
+                setIsSorting(false);
+                return;
+            }
+        }else if (algo === "merge") {
+            animation = mergeSort(array);
             if (!Array.isArray(animation)) {
                 console.error("Invalid animation returned from sorting algorithm");
                 setIsSorting(false);
