@@ -6,7 +6,7 @@ export default function mergeSort(array) {
 }
 
 function mergeSortHelper(mainArray, auxiliaryArray, startIdx, endIdx, animations) {
-    if (startIdx === endIdx) return;
+    if (startIdx >= endIdx) return;  // Better termination condition
     
     const middleIdx = Math.floor((startIdx + endIdx) / 2);
     
