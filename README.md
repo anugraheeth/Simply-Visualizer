@@ -22,7 +22,7 @@ A dynamic web application built with React that visualizes sorting algorithms in
 - React 18
 - Vite
 - CSS3
-- JavaScript ES6+
+- JavaScript 
 
 ## 🎯 Core Components
 
